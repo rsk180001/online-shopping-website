@@ -70,7 +70,7 @@ require "functions/functions.php";
                                 <div class='single_product'>
                                     <h3>$pro_title</h3>
                                     <img src='admin/product_images/$pro_image' width='400' height='300'>
-                                    <p> <b> Rs $pro_price/-  </b> </p>
+                                    <p> <b> $ $pro_price/-  </b> </p>
                                     <p>$pro_desc</p> 
                                     <a href='index.php' style='float: left'>Go Back</a>
                                     <a href='index.php?pro_id=$pro_id'><button style='float: right;'>Add to Cart</button></a>

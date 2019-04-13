@@ -7,19 +7,22 @@ require "functions/functions.php";
 <head>
     <meta charset="UTF-8">
     <title>My Online Shop</title>
-    <link rel="stylesheet" type="text/css" href="css/newstyle.css">
+    <link rel="stylesheet" type="text/css" href="css/mystyle.css">
 </head>
 <body>
     <div class="main_wrapper">
         <div class="header_wrapper">
-            <img id="banner" src="images/banner.jpg">
+            <a href="index.php"><img id="logo" src="images/logo.jpg"></a>
+            <img id="banner" src="images/banner.gif">
         </div>
         <div class="menubar">
             <ul id="menu">
                 <li><a href="index.php">Home</a></li>
                 <li><a href="all_products.php">All Products</a></li>
                 <li><a href="my_account.php">My Account</a></li>
+                <li><a href="#">Sign Up</a></li>
                 <li><a href="cart.php">Cart</a></li>
+                <li><a href="#">Contact Us</a></li>
             </ul>
             <div id="form">
                 <form method="get" action="results.php">
@@ -77,17 +80,17 @@ require "functions/functions.php";
                         else
                             echo "Welcome ".$_SESSION['customer_email'];
                         ?>
-                        <b >
+                        <b style="color: yellow">
                             Shopping Cart - </b>
                         Total Items: <?php total_items(); ?>
                         Total Price: <?php total_price(); ?>
-                        <a href="index.php">Back to Shop</a>
+                        <a style="color: yellow" href="index.php">Back to Shop</a>
                         <?php
                         if(!isset($_SESSION['customer_email'])){
-                            echo "<a href='checkout.php'>Login</a>";
+                            echo "<a style='color: orange;' href='checkout.php'>Login</a>";
                         }
                         else{
-                            echo "<a href='logout.php'>Logout</a>";
+                            echo "<a style='color: orange;' href='logout.php'>Logout</a>";
                         }
                         ?>
                     </span>
@@ -96,7 +99,7 @@ require "functions/functions.php";
                 <div class="products_box">
                     <br>
                     <form action="" method="post" enctype="multipart/form-data">
-                        <table align="center" width="700px" >
+                        <table align="center" width="700px" bgcolor="#87ceeb">
                             <tr align="center">
                                 <th> Remove </th>
                                 <th> Product(s) </th>
@@ -131,8 +134,8 @@ require "functions/functions.php";
                                             <td><input size="2" name="qty[]" value="<?php echo $pro_qty;?>">
                                                 <input name="product_id[]" type="hidden" value="<?php echo $pro_id;?>">
                                             </td>
-                                            <td><?php echo "Rs " . $pro_price . "/-"; ?></td>
-                                            <td><?php echo "Rs " . $pro_price_all_items . "/-"; ?></td>
+                                            <td><?php echo "$".$pro_price ; ?></td>
+                                            <td><?php echo "$".$pro_price_all_items; ?></td>
                                         </tr>
                                         <?php
                                     }
@@ -141,9 +144,9 @@ require "functions/functions.php";
 
                             <tr align="right">
                                 <td colspan="4"><b>Sub Total:</b></td>
-                                <td><?php echo "Rs ".$total."/-"; ?></td>
+                                <td><?php echo "$".$total; ?></td>
                             </tr>
-                            <tr align="right">
+                            <tr align="center">
                                 <td colspan="2"><input type="submit" name="update_cart" value="Update Cart"></td>
                                 <td><input type="submit" name="continue" value="Continue Shopping"></td>
                                 <td><button>
@@ -158,6 +161,9 @@ require "functions/functions.php";
                 </div>
 
             </div>
+        </div>
+        <div id="footer">
+            <h2> &copy; 2018 by Muhammad Ali Makhdoom</h2>
         </div>
     </div>
 </body>

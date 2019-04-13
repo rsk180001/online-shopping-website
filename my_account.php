@@ -81,17 +81,33 @@ require "functions/functions.php";
             </div>
             <div class="products_box">
                 <?php
-                    if(!isset($_GET['my_orders'])) {
-                        if (!isset($_GET['edit_account'])) {
-                            if (!isset($_GET['change_pass'])) {
-                                if (!isset($_GET['del_account'])) {
-                                    echo "<h2 style='padding: 20px;'> Welcome:  $c_name </h2>";
-                                    echo "<b>you can see your orders' progress by clicking this <a href='my_account.php?my_orders'> link </a></b>";
-                                }
-                            }
+                    if(isset($_GET['my_orders'])) {
+                        echo "<h2 style='padding: 20px;'> Welcome:  $c_name </h2>";
+                        $email_id = $_SESSION['customer_email'];
+                        $hist_query="SELECT * from history where cust_email='$email_id'";
+                        $get_hist = mysqli_query($con,$hist_query);
+                        while ($hist_row = mysqli_fetch_array($get_hist)){
+                                        $pro_title = $hist_row['pro_title'];
+                                        $pro_image = $hist_row['pro_image'];
+                                        $pro_price = $hist_row['pro_price'];
+                                        $pro_qty = $hist_row['pro_quantity'];
+                        ?>
+                                    <table>
+                                        <tr align="center">
+                                            <td><?php echo $pro_title; ?> 
+                                                <br>
+                                                <img src="admin/product_images/<?php echo $pro_image; ?>"
+                                                     width="60" height="60">
+                                            </td>
+                                            <td><?php echo "Rs".$pro_price?></td>
+                                            <td><?php echo $pro_qty; ?></td>
+                                        </tr>
+                <?php
+                        
                         }
                     }
-                ?>
+                ?></table>
+                
                 <?php
                     if(isset($_GET['edit_account'])){
                         include ('edit_account.php');
