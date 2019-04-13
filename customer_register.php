@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="js/validate.js"></script>
+<meta charset="utf-8">
+<link rel="stylesheet" href="css/validate.css">
+<link rel="stylesheet" href="css/newstyle.css">
 <?php
 session_start();
 require "functions/functions.php";
@@ -9,8 +13,8 @@ if(isset($_POST['register'])){
     global $con;
     $ip = getIp();
     $c_name = $_POST['c_name'];
-    $c_email = $_POST['c_email'];
-    $c_pass = $_POST['c_pass'];
+    $c_email = $_POST['email'];
+    $c_pass = $_POST['pass'];
     $c_image = $_FILES['c_image']['name'];
     $c_image_tmp = $_FILES['c_image']['tmp_name'];
     $c_country = $_POST['c_country'];
@@ -20,7 +24,7 @@ if(isset($_POST['register'])){
 
     move_uploaded_file($c_image_tmp,"customer/customer_images/$c_image");
 
-    $insert_c = "insert into customers (cust_ip,cust_name,cust_email,cust_pass,cust_country,cust_city,cust_contact,cust_address,cust_image) 
+    $insert_c = "insert into customers (cust_ip,cust_name,cust_email,cust_pass,cust_country,cust_city,cust_contact,cust_address,cust_image)
                   values ('$ip','$c_name','$c_email','$c_pass','$c_country','$c_city','$c_contact','$c_address','$c_image')";
     $run_c = mysqli_query($con,$insert_c);
     $sel_cart = "select * from cart where ip_add='$ip'";
@@ -100,13 +104,12 @@ if(isset($_POST['register'])){
                             <tr>
                                 <td align="right">Email: </td>
                                 <td>
-                                    <input name="c_email" onkeyup="checkEmail(this.value)" required>
-                                    <span id="hint"></span>
+                                    <input type="text" name="email" id="email" required>
                                 </td>
                             </tr>
                             <tr>
                                 <td align="right">Password: </td>
-                                <td><input type="password" name="c_pass" required></td>
+                                <td><input type="password" name="pass" id="password" required></td>
                             </tr>
                             <tr>
                                 <td align="right">Image: </td>
@@ -115,8 +118,8 @@ if(isset($_POST['register'])){
                             <tr>
                                 <td align="right">Country: </td>
                                 <td>
-                                    <select name="c_country">
-                                        <option>Select a Country </option>
+                                    <select name="c_country" placeholder="Select a Country">
+                                        <option> USA </option>
                                         <option>Afghanistan </option>
                                         <option>Pakistan</option>
                                         <option>China</option>

@@ -1,3 +1,12 @@
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="js/validate.js"></script>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="css/validate.css">
+	<title>Form Validation</title>
+
+
+
 <?php
 if(isset($_POST['login']))
 {
@@ -25,29 +34,26 @@ if(isset($_POST['login']))
     }
 }
 ?>
-<div>
-    <form method="post" action="">
-        <table width="500" align="center" bgcolor="skyblue">
-            <tr align="center">
-                <td colspan="2"><h2>Login or Register to Buy!</h2></td>
-            </tr>
-            <tr>
-                <td align="right"><b>Email: </b></td>
-                <td><input type="text" name="email"  placeholder="Enter email" required></td>
-            </tr>
-            <tr>
-                <td align="right"><b>Password:</b></td>
-                <td><input type="password" name="pass" placeholder="Enter password" required></td>
-            </tr>
-            <tr align="center">
-                <td colspan="2"><a href="checkout.php?forgot_pass">Forgot Password? </a></td>
-            </tr>
-            <tr align="center">
-                <td colspan="2"><input type="submit" name="login" value="Login"></td>
-            </tr>
-        </table>
+<div id='login'>
+  <h1>Login</h1>
+  <form class="signup" method="post">
+    <table>
+      <tr>
+        <td><label for="email">Email:</label></td>
+        <td><input type="text" name="email" id="email"></td>
+      </tr>
+      <tr>
+        <td><label for="password">Password:</label></td>
+        <td><input type="password" name="pass" id="password"></td>
+      </tr>
+    </table>
+    <tr align="center">
+                    <td colspan="2"><input type="submit" name="login" value="Login"></td>
+                </tr>
+
         <h2 style="padding: 5px;float: left;">
             <a style="text-decoration: none;" href="customer_register.php">Register Here</a>
         </h2>
+
     </form>
 </div>
