@@ -91,7 +91,8 @@ body {
 }
 
 #content_area {
-    float: right;
+    width: 1100px;
+    float: left;
 }
 
 #sidebar {

@@ -7,22 +7,19 @@ require "functions/functions.php";
 <head>
     <meta charset="UTF-8">
     <title>My Online Shop</title>
-    <link rel="stylesheet" type="text/css" href="css/mystyle.css">
+    <link rel="stylesheet" type="text/css" href="css/newstyle.css">
 </head>
 <body>
     <div class="main_wrapper">
         <div class="header_wrapper">
-            <a href="index.php"><img id="logo" src="images/logo.jpg"></a>
-            <img id="banner" src="images/banner.gif">
+            <img id="banner" src="images/banner.jpg">
         </div>
         <div class="menubar">
             <ul id="menu">
                 <li><a href="index.php">Home</a></li>
                 <li><a href="all_products.php">All Products</a></li>
                 <li><a href="my_account.php">My Account</a></li>
-                <li><a href="#">Sign Up</a></li>
                 <li><a href="cart.php">Cart</a></li>
-                <li><a href="#">Contact Us</a></li>
             </ul>
             <div id="form">
                 <form method="get" action="results.php">
@@ -72,7 +69,7 @@ require "functions/functions.php";
                 ?>
                 <div class="shopping_cart">
                     <?php cart(); ?>
-                    <span style="float: right;
+                    <span style="
                     font-size: 18px; padding: 5px;line-height: 40px;">
                         <?php
                         if(!isset($_SESSION['customer_email']))
@@ -80,17 +77,16 @@ require "functions/functions.php";
                         else
                             echo "Welcome ".$_SESSION['customer_email'];
                         ?>
-                        <b style="color: yellow">
+                        <b>
                             Shopping Cart - </b>
                         Total Items: <?php total_items(); ?>
                         Total Price: <?php total_price(); ?>
-                        <a style="color: yellow" href="index.php">Back to Shop</a>
                         <?php
                         if(!isset($_SESSION['customer_email'])){
-                            echo "<a style='color: orange;' href='checkout.php'>Login</a>";
+                            echo "   <a href='checkout.php'>Login</a>";
                         }
                         else{
-                            echo "<a style='color: orange;' href='logout.php'>Logout</a>";
+                            echo "<a href='logout.php'>Logout</a>";
                         }
                         ?>
                     </span>
@@ -161,9 +157,6 @@ require "functions/functions.php";
                 </div>
 
             </div>
-        </div>
-        <div id="footer">
-            <h2> &copy; 2018 by Muhammad Ali Makhdoom</h2>
         </div>
     </div>
 </body>

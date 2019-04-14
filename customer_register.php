@@ -44,22 +44,19 @@ if(isset($_POST['register'])){
 <head>
     <meta charset="UTF-8">
     <title>My Online Shop</title>
-    <link rel="stylesheet" type="text/css" href="css/mystyle.css">
+    <link rel="stylesheet" type="text/css" href="css/newstyle.css">
 </head>
 <body>
     <div class="main_wrapper">
         <div class="header_wrapper">
-            <a href="index.php"><img id="logo" src="images/logo.jpg"></a>
-            <img id="banner" src="images/banner.gif">
+            <img id="banner" src="images/banner.jpg">
         </div>
         <div class="menubar">
             <ul id="menu">
                 <li><a href="index.php">Home</a></li>
                 <li><a href="all_products.php">All Products</a></li>
                 <li><a href="customer/account.php">My Account</a></li>
-                <li><a href="#">Sign Up</a></li>
                 <li><a href="cart.php">Cart</a></li>
-                <li><a href="#">Contact Us</a></li>
             </ul>
             <div id="form">
                 <form method="get" action="results.php">
@@ -82,20 +79,19 @@ if(isset($_POST['register'])){
             <div id="content_area">
                 <div class="shopping_cart">
                     <?php cart(); ?>
-                    <span style="float: right;
+                    <span style="
                     font-size: 18px; padding: 5px;line-height: 40px;">
-                        Welcome guest! <b style="color: yellow">
+                        Welcome guest! <b>
                             Shopping Cart - </b>
                         Total Items: <?php total_items(); ?>
                         Total Price: <?php total_price(); ?>
-                        <a style="color: yellow" href="cart.php">Go to Cart</a>
                     </span>
                 </div>
 
                     <form action="customer_register.php" method="post" enctype="multipart/form-data">
                         <table align="center" width="750">
                             <tr align="center">
-                                <td colspan="3"><h2>create an Account </h2></td>
+                                <td colspan="2"><h2>create an Account </h2></td>
                             </tr>
                             <tr>
                                 <td align="right">Name: </td>
@@ -145,12 +141,7 @@ if(isset($_POST['register'])){
                         </table>
 
                     </form>
-
-
             </div>
-        </div>
-        <div id="footer">
-            <h2> &copy; 2018 by Muhammad Ali Makhdoom</h2>
         </div>
     </div>
     <script>

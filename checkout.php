@@ -42,7 +42,7 @@ require "functions/functions.php";
             <div id="content_area">
                 <div class="shopping_cart">
                     <?php cart(); ?>
-                    <span style="float: right;
+                    <span style="float: left;
                     font-size: 18px; padding: 5px;line-height: 40px;">
                         <?php
                         if(!isset($_SESSION['customer_email']))

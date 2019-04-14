@@ -42,7 +42,7 @@ require "functions/functions.php";
             <div id="content_area">
                 <div class="shopping_cart">
                     <?php cart(); ?>
-                    <span style="float: right;
+                    <span style="float: left;
                     font-size: 18px; padding: 5px;line-height: 40px;">
                         <?php
                         if(!isset($_SESSION['customer_email']))
@@ -54,7 +54,6 @@ require "functions/functions.php";
                             Shopping Cart - </b>
                         Total Items: <?php total_items(); ?>
                         Total Price: <?php total_price(); ?>
-                        <a href="cart.php">Go to Cart</a>
 
                         <?php
                         if(!isset($_SESSION['customer_email'])){
