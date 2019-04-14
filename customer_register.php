@@ -14,7 +14,7 @@ if(isset($_POST['register'])){
     $ip = getIp();
     $c_name = $_POST['c_name'];
     $c_email = $_POST['email'];
-    $c_pass = $_POST['pass'];
+    $c_pass = password_hash($_POST['pass'],PASSWORD_BCRYPT);
     $c_image = $_FILES['c_image']['name'];
     $c_image_tmp = $_FILES['c_image']['tmp_name'];
     $c_country = $_POST['c_country'];

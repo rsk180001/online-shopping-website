@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ERROR | E_PARSE);
 if(!isset($_SESSION['user_email'])){
     header('location: login.php?not_admin=You are not Admin!');
 }
@@ -17,8 +18,7 @@ if(!isset($_SESSION['user_email'])){
             </div>
             <div class="form-group row">
                 <div class="offset-sm-3 col-12 col-sm-6">
-                    <input class="btn btn-block btn-primary btn-lg" type="submit" id="insert_cat" name="insert_cat"
-                           value="Insert Category">
+                    <input class="btn btn-block btn-primary btn-lg" type="submit" id="insert_cat" name="insert_cat" value="Insert Category">
                 </div>
             </div>
         </form>
@@ -31,6 +31,9 @@ if(isset($_POST['insert_cat'])){
     $insert_cat = mysqli_query($con, $insert_cat);
     if($insert_cat){
         header("location: index.php?view_categories");
+    }
+    else {
+      echo "FAILED TO INSERT";
     }
 }
 

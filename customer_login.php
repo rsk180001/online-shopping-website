@@ -14,13 +14,18 @@ if(isset($_POST['login']))
     $ip = getIp();
     $c_email = $_POST['email'];
     $c_pass = $_POST['pass'];
-    $sel_c = "select * from customers where cust_pass = '$c_pass' AND cust_email = '$c_email'";
+		$hash = '$2y$07$BCryptRequires22Chrcte/VlQH0piJtjXl.0t1XkA8pw9dMXTpOq';
+    $password_verify = password_verify($c_pass,$hash);
+    $sel_c = "select * from customers where cust_pass = '$password_verify' AND cust_email = '$c_email'";
     $run_c = mysqli_query($con,$sel_c);
     $check_c = mysqli_num_rows($run_c);
-    if($check_c==0){
+    if($check_c==1){
         header('location:'.$_SERVER['PHP_SELF']);
         exit();
     }
+		else {
+			echo "USERNAME OR PASSWORD INVALID";
+		}
     $sel_cart = "select * from cart where ip_add='$ip'";
     $run_cart = mysqli_query($con,$sel_cart);
     $check_cart = mysqli_num_rows($run_cart);
