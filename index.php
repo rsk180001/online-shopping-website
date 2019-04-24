@@ -68,16 +68,33 @@ require "functions/functions.php";
                 <div class="products_box">
                     <?php getPro(); ?>
                 </div>
-                <div class='Pagination'>
-                    <?php
-                            for ($i=1; $i<=3; $i++) 
-                            { 
-                                echo "<a href='index.php?page=".$i."'>".'   '.$i.'   '."</a>";   
-                            };         
-                    ?>
+                
+                
+<!--
+                <div class="pagination">
+                    <a href="index.php?page=1">&laquo;</a>
+                    <a href="index.php?page=1">1</a>
+                    <a href="index.php?page=2">2</a>
+                    <a href="index.php?page=3">3</a>
+                    <a href="index.php?page=3">&raquo;</a>
+                    
                 </div>
+-->
+                
+                
+                
             </div>
         </div>
+          <div class="pagination">
+                    <a href="index.php?page=1">&laquo;</a>
+                    <a href="index.php?page=1">1</a>
+                    <a href="index.php?page=2">2</a>
+                    <a href="index.php?page=3">3</a>
+                    <a href="index.php?page=3">&raquo;</a>
+                    
+                </div>
+
     </div>   
+  
 </body>
 </html>
