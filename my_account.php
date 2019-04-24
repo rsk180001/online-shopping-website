@@ -7,34 +7,19 @@ require "functions/functions.php";
 <head>
     <meta charset="UTF-8">
     <title>My Online Shop</title>
-    <link rel="stylesheet" type="text/css" href="css/mystyle.css">
-    <style>
-        .main_wrapper {
-            background-color: pink;
-        }
-        .cats a {
-            color: orange;
-            font-size: 16px;
-        }
-        .cats a:hover {
-            color: white;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="css/newstyle.css">
 </head>
 <body>
 <div class="main_wrapper">
     <div class="header_wrapper">
-        <a href="index.php"><img id="logo" src="images/logo.jpg"></a>
-        <img id="banner" src="images/banner.gif">
+        <img id="banner" src="images/banner.jpg">
     </div>
     <div class="menubar">
         <ul id="menu">
             <li><a href="index.php">Home</a></li>
             <li><a href="all_products.php">All Products</a></li>
             <li><a href="my_account.php">My Account</a></li>
-            <li><a href="#">Sign Up</a></li>
             <li><a href="cart.php">Cart</a></li>
-            <li><a href="#">Contact Us</a></li>
         </ul>
         <div id="form">
             <form method="get" action="results.php">
@@ -72,7 +57,7 @@ require "functions/functions.php";
                     <?php
                         if(isset($_SESSION['customer_email'])){
                             echo "Welcome ".$_SESSION['customer_email'];
-                            echo "<a style='color: orange;' href='../logout.php'> Logout</a>";
+                            echo "<a style='color: orange;' href='./logout.php'> Logout</a>";
                         } else {
                             header('location: index.php');
                         }
@@ -125,9 +110,6 @@ require "functions/functions.php";
             </div>
 
         </div>
-    </div>
-    <div id="footer">
-        <h2> &copy; 2018 by Muhammad Ali Makhdoom</h2>
     </div>
 </div>
 </body>

@@ -8,7 +8,6 @@ require "functions/functions.php";
     <meta charset="UTF-8">
     <title>My Online Shop</title>
     <link rel="stylesheet" href="css/newstyle.css">
-    
 </head>
 <body>
     <div class="main_wrapper">
@@ -57,6 +56,7 @@ require "functions/functions.php";
                         Total Price: <?php total_price(); ?>
                         <?php
                             if(!isset($_SESSION['customer_email'])){
+                                // echo "<a href='checkout.php'>Login</a>";
                                 echo "<a href='checkout.php'>Login</a>";
                             }
                             else{
@@ -68,9 +68,16 @@ require "functions/functions.php";
                 <div class="products_box">
                     <?php getPro(); ?>
                 </div>
-
+                <div class='Pagination'>
+                    <?php
+                            for ($i=1; $i<=3; $i++) 
+                            { 
+                                echo "<a href='index.php?page=".$i."'>".'   '.$i.'   '."</a>";   
+                            };         
+                    ?>
+                </div>
             </div>
         </div>
-    </div>
+    </div>   
 </body>
 </html>

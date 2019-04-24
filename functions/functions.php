@@ -28,18 +28,31 @@ function getBrands(){
 function getPro($flag = ''){
     global $con;
     $get_pro = "";
-    if(!isset($_GET['cat']) && !isset($_GET['brand']) && !isset($_GET['search'])) {
+    if(!isset($_GET['cat']) && !isset($_GET['brand']) && !isset($_GET['search'])) 
+    {
+        $limit = 8;  
+        if (isset($_GET["page"])) 
+        {  
+            $pn  = $_GET["page"];  
+        }  
+        else 
+        {  
+            $pn=1;  
+        };   
+  
+        $start_from = ($pn-1) * $limit;   
         if($flag == 'all_products')
-            $get_pro = "select * from products";
+            $get_pro = "select * from products ";
         else
-            $get_pro = "select * from products order by RAND() limit 0,6";
+            $get_pro = "select * from products LIMIT $start_from, $limit";
     } else if(isset($_GET['cat'])){
         $pro_cat_id = $_GET['cat'];
         $get_pro = "select * from products where pro_cat = '$pro_cat_id'";
     } else if(isset($_GET['brand'])){
         $pro_brand_id = $_GET['brand'];
         $get_pro = "select * from products where pro_brand = '$pro_brand_id'";
-    } else if(isset($_GET['search'])){
+    } else if(isset($_GET['search']))
+    {
         $search_query = $_GET['user_query'];
         $get_pro = "select * from products where pro_keywords like '%$search_query%'";
     }

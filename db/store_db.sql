@@ -221,3 +221,33 @@ COMMIT;
 -- PARTH DATABASE CHANGES
 CREATE TABLE admins(id int primary key AUTO_INCREMENT,user_email varchar(255), user_pass varchar(255));
 INSERT INTO admins VALUES(1,"parthkhetarpal@hotmail.com","qwertyuiop1");
+
+-- Nikhil adding history table and its data
+
+--
+-- Table structure for table `history`
+--
+
+CREATE TABLE `history` (
+  `cust_email` varchar(100) NOT NULL,
+  `pro_title` varchar(250) NOT NULL,
+  `pro_image` varchar(300) NOT NULL,
+  `pro_price` int(100) NOT NULL,
+  `pro_quantity` int(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `history`
+--
+
+INSERT INTO `history` (`cust_email`, `pro_title`, `pro_image`, `pro_price`, `pro_quantity`) VALUES
+('Nlk180002@utdallas.edu', 'Apple iMAC', 'apple-imac-mid-2010-27.jpg', 245000, 1),
+('Nlk180002@utdallas.edu', 'Samsung J6', 'samsung2.jpg', 24999, 1),
+('Nlk180002@utdallas.edu', 'Apple iMAC', 'apple-imac-mid-2010-27.jpg', 245000, 1),
+('Nlk180002@utdallas.edu', 'Samsung J6', 'samsung2.jpg', 24999, 1),
+('nikhilkalekar@gmail.com', 'imac book big', '71KyjhnQY4L._SY355_.jpg', 290000, 1),
+('nikhilkalekar@gmail.com', 'Samsung Original Gear S3', 'samsung2 (2).jpg', 2900, 3),
+('nikhilkalekar@gmail.com', 'Dell laptop new', 'download.jpg', 45000, 3),
+('Nlk180002@utdallas.edu', 'oppo f1s', 'QMobile-Noir-i8i-Techjuice.jpg', 25000, 1),
+('Nlk180002@utdallas.edu', 'Samsung J6', 'samsung2.jpg', 24999, 1),
+('nikhilkalekar@gmail.com', 'Samsung Original Gear S3', 'samsung2 (2).jpg', 2900, 2);

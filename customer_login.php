@@ -41,7 +41,7 @@ if(isset($_POST['login']))
 ?>
 <div id='login'>
   <h1>Login</h1>
-  <form class="signup" method="post">
+  <form class="signup" method="post" >
     <table>
       <tr>
         <td><label for="email">Email:</label></td>
@@ -53,12 +53,11 @@ if(isset($_POST['login']))
       </tr>
     </table>
     <tr align="center">
-                    <td colspan="2"><input type="submit" name="login" value="Login"></td>
-                </tr>
-
-        <h2 style="padding: 5px;float: left;">
-            <a style="text-decoration: none;" href="customer_register.php">Register Here</a>
-        </h2>
+        <td colspan="2"><input type="submit" name="login" value="Login"></td>
+    </tr>
+    <h2 style="padding: 5px;float: left;">
+        <a style="text-decoration: none;" href="customer_register.php">Register Here</a>
+    </h2>
 
     </form>
 </div>
