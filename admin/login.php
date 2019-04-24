@@ -5,7 +5,7 @@ $error_msg = '';
 if(isset($_POST['login'])){
     $email = $_POST['user_email'];
     $pass = $_POST['user_pass'];
-    $sel_user = "select * from admins where user_email='$email' AND user_pass='$pass'";
+    $sel_user = "select * from customers where cust_email='$email' AND cust_pass='$pass' AND isAdmin = 1";
     $run_user = mysqli_query($con, $sel_user);
     $check_user = mysqli_num_rows($run_user);
     if($check_user==0){
