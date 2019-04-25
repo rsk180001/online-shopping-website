@@ -14,6 +14,7 @@ if(isset($_POST['register'])){
     $ip = getIp();
     $c_name = $_POST['c_name'];
     $c_email = $_POST['email'];
+    $c_pass = $_POST['pass'];
     $c_pass = password_hash($_POST['pass'],PASSWORD_BCRYPT);
     $c_image = $_FILES['c_image']['name'];
     $c_image_tmp = $_FILES['c_image']['tmp_name'];
@@ -88,7 +89,7 @@ if(isset($_POST['register'])){
                     </span>
                 </div>
 
-                    <form action="customer_register.php" method="post" enctype="multipart/form-data">
+                    <form action="customer_register.php" method="post" onsubmit="return validateForm()">
                         <table align="center" width="750">
                             <tr align="center">
                                 <td colspan="2"><h2>create an Account </h2></td>
@@ -100,12 +101,18 @@ if(isset($_POST['register'])){
                             <tr>
                                 <td align="right">Email: </td>
                                 <td>
-                                    <input type="text" name="email" id="email" required>
+
+                                    <input name="email" id = "email" required onkeyup="checkEmail(this.value)" >
+                                    <span id="hint"></span>
+
                                 </td>
+
                             </tr>
                             <tr>
                                 <td align="right">Password: </td>
-                                <td><input type="password" name="pass" id="password" required></td>
+                                <td><input type="password" onkeyup="checkPassword(this.value)" name="pass" id="password" required>
+                                <span id="hint2"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td align="right">Image: </td>
@@ -120,6 +127,7 @@ if(isset($_POST['register'])){
                                         <option>Pakistan</option>
                                         <option>China</option>
                                         <option>Canada</option>
+                                        <option>India</option>
                                     </select>
                                 </td>
                             </tr>
@@ -146,8 +154,9 @@ if(isset($_POST['register'])){
     </div>
     <script>
         function checkEmail(email) {
+          // document.getElementById('hint').innerHTML = "chbddcbd";
             if(email==''){
-                document.getElementById('hint').innerHTML = "";
+                document.getElementById('hint').innerHTML = "Empty";
             }
             else {
                 var xhttp = new XMLHttpRequest();
@@ -160,6 +169,21 @@ if(isset($_POST['register'])){
                 xhttp.send();
             }
         }
+        function checkPassword(pass) {
+          document.getElementById('hint2').innerHTML = "Entered";
+          if(/^[A-Za-z0-9\d=!\-@._*]*$/.test(pass) // consists of only these
+        && /[a-z]/.test(pass) // has a lowercase letter
+        && /\d/.test(pass) // has a digit ;
+        && input.length > 8
+        && /[A-Z]/.test(pass))
+        {
+            document.getElementById('hint2').innerHTML = "works";
+        }
+        else{
+          document.getElementById('hint2').innerHTML = "NO";
+        }
+        }
+
     </script>
 </body>
 </html>

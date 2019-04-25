@@ -14,19 +14,28 @@ if(isset($_POST['login']))
     $ip = getIp();
     $c_email = $_POST['email'];
     $c_pass = $_POST['pass'];
-		$hash = '$2y$07$BCryptRequires22Chrcte/VlQH0piJtjXl.0t1XkA8pw9dMXTpOq';
-    $password_verify = password_verify($c_pass,$hash);
-    $sel_c = "select * from customers where cust_pass = '$password_verify' AND cust_email = '$c_email'";
-    $run_c = mysqli_query($con,$sel_c);
-    $check_c = mysqli_num_rows($run_c);
-    if($check_c==1){
+		$sel_h = "select cust_pass from customers where cust_email = '$c_email'";
+		$run_h = mysqli_query($con,$sel_h);
+		$check_e = mysqli_num_rows($run_h);
+		if($check_e == 1){
+		$row_h = mysqli_fetch_array($run_h);
+		$hash = $row_h['cust_pass'];
+		$password_verify = password_verify($c_pass,$hash);
+		if($password_verify== True){
+			// header('location: asas.php');
+			// exit();
+		}
+		else{
+			// header('location: index.php');
+			header('location: '.$_SERVER['PHP_SELF']);
+			exit();
+		}}
+    else{
+				// header('location: details.php');
         header('location:'.$_SERVER['PHP_SELF']);
         exit();
     }
-		else {
-			echo "USERNAME OR PASSWORD INVALID";
-		}
-    $sel_cart = "select * from cart where ip_add='$ip'";
+		$sel_cart = "select * from cart where ip_add='$ip'";
     $run_cart = mysqli_query($con,$sel_cart);
     $check_cart = mysqli_num_rows($run_cart);
     if($check_c > 0 && $check_cart ==0){
@@ -45,11 +54,11 @@ if(isset($_POST['login']))
     <table>
       <tr>
         <td><label for="email">Email:</label></td>
-        <td><input type="text" name="email" id="email"></td>
+        <td><input type="text" name="email" id="email" required></td>
       </tr>
       <tr>
         <td><label for="password">Password:</label></td>
-        <td><input type="password" name="pass" id="password"></td>
+        <td><input type="password" name="pass" id="password" required></td>
       </tr>
     </table>
     <tr align="center">

@@ -126,7 +126,9 @@ if(!isset($_SESSION['user_email'])){
                         else if(isset($_GET['del_customer'])){
                             include ('del_customer.php');
                         }
-
+                        else {
+                          include('../index.php');
+                        }
 
                         ?>
                 </div>
