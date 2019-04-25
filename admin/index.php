@@ -64,10 +64,6 @@ if(!isset($_SESSION['user_email'])){
                             <i class="fa fa-shopping-bag"></i> View Orders</a>
                     </li>
                     <li>
-                        <a href="index.php?view_payments">
-                            <i class="fa fa-credit-card"></i> View Payments</a>
-                    </li>
-                    <li>
                         <a href="logout.php">
                             <i class="fa fa-sign-out-alt"></i> Admin logout</a>
                     </li>
