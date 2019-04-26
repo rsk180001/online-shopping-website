@@ -12,15 +12,16 @@ if(isset($_POST['login'])){
         $error_msg = 'Password or Email is wrong, try again';
     }
     else{
-        $_SESSION['user_email'] = $email;
-        if(!empty($_POST['remember'])) {
-            setcookie('user_email', $email, time() + (10 * 365 * 24 * 60 * 60));
-            setcookie('user_pass', $pass, time() + (10 * 365 * 24 * 60 * 60));
-        } else {
-            setcookie('user_email','' );
-            setcookie('user_pass', '');
-        }
-        header('location:index.php?logged_in=You have successfully logged in!');
+        $_SESSION['customer_email'] = $email;
+        $_SESSION['isAdmin'] = 1;
+//        if(!empty($_POST['remember'])) {
+//            setcookie('user_email', $email, time() + (10 * 365 * 24 * 60 * 60));
+//            setcookie('user_pass', $pass, time() + (10 * 365 * 24 * 60 * 60));
+//        } else {
+//            setcookie('user_email','');
+//            setcookie('user_pass', '');
+//        }
+        header('location:../index.php');
     }
 }
 ?>
@@ -46,10 +47,12 @@ if(isset($_POST['login'])){
                value="<?php echo @$_COOKIE['user_email']?>" class="form-control" placeholder="Email address" required autofocus>
         <input type="password" id="user_pass" name="user_pass"
                value="<?php echo @$_COOKIE['user_pass']?>" class="form-control" placeholder="Password" required><br>
+<!--
         <div class="form-check">
             <input type="checkbox" class="form-check-input" id="remember" name="remember">
             <label class="form-check-label" for="remember">Remember me</label>
         </div>
+-->
         <input class="btn btn-lg btn-primary mt-3" type="submit" name="login" value="Sign in">
     </form>
 <script src="assets/js/jquery-3.3.1.min.js"></script>

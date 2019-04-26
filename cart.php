@@ -20,6 +20,11 @@ require "functions/functions.php";
                 <li><a href="all_products.php">All Products</a></li>
                 <li><a href="my_account.php">My Account</a></li>
                 <li><a href="cart.php">Cart</a></li>
+                <?php
+                if(isset($_SESSION['isAdmin'])){
+                    echo "<li><a href='admin/index.php?insert_product'>Insert Product</a></li>";
+                }
+                ?>
             </ul>
             <div id="form">
                 <form method="get" action="results.php">

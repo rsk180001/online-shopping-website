@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <?php
 require "functions/functions.php";
+session_start();
 ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>My Online Shop</title>
     <link rel="stylesheet" type="text/css" href="css/newstyle.css">
+    <link rel="adminStyle" type="text/css" href="admin/";
 </head>
 <body>
     <div class="main_wrapper">
@@ -20,6 +22,11 @@ require "functions/functions.php";
                 <li><a href="my_account.php">My Account</a></li>
                 
                 <li><a href="cart.php">Cart</a></li>
+                <?php
+                if(isset($_SESSION['isAdmin'])){
+                    echo "<li><a href='admin/index.php?insert_product'>Insert Product</a></li>";
+                }
+                ?>
                 
             </ul>
             <div id="form">
@@ -45,7 +52,7 @@ require "functions/functions.php";
                     <span style="float: left;
                     font-size: 18px; padding: 5px;line-height: 40px;">
                         Welcome guest! <b>
-                            Shopping Cart - </b>
+                        Shopping Cart - </b>
                         Total Items: <?php total_items(); ?>
                         Total Price: <?php total_price(); ?>
                     </span>
@@ -55,6 +62,7 @@ require "functions/functions.php";
                     <?php
                     if(isset($_GET['pro_id'])) {
                         $product_id = $_GET['pro_id'];
+                        $_SESSION['product_id']=$product_id;
                         global $con;
                         $get_pro = "select * from products where pro_id='$product_id'";
                         $run_pro = mysqli_query($con, $get_pro);
@@ -71,11 +79,57 @@ require "functions/functions.php";
                                     <p> <b> $ $pro_price/-  </b> </p>
                                     <p>$pro_desc</p> 
                                     <a href='index.php' style='float: left'>Go Back</a>
+                                    <a href='details.php?wish=true'><button style='float: center;'> Wishlist</button></a> 
                                     <a href='index.php?pro_id=$pro_id'><button style='float: right;'>Add to Cart</button></a>
-                                </div>
+                                    </div>
                         ";
-                        }
+                            
+                            
+                                     
+                    
+                        
                     }
+
+                        }
+                    
+                    if(isset($_SESSION['isAdmin'])){
+                        
+                            echo "
+                            
+                            <a href='admin/index.php?edit_pro=$pro_id' class='btn btn-primary'>
+                                <button> Edit </button>
+                            </a>
+                            <br>
+                            <br>
+                            <a href='admin/index.php?del_pro=$pro_id'>
+                                <button> Delete</button>
+                            </a>
+                            
+                            ";
+
+                    }
+                    
+                    function addWish(){
+                    
+                        
+                        if(isset($_SESSION['customer_email'])){
+                        $pro_id= $_SESSION['product_id'];   
+                        $email_id=$_SESSION['customer_email'];
+                        global $con;
+                        $get_pro = "insert into favlist values('$pro_id','$email_id')";
+                        $run_pro = mysqli_query($con, $get_pro);
+                        header('location:index.php?');    
+                        }else{
+                            include ("customer_login.php");
+                        }
+                    
+                    }
+                    
+                    if(isset($_GET['wish'])){
+                        addWish();
+                        
+                    }
+                    
                     ?>
                 </div>
 

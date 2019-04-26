@@ -20,6 +20,11 @@ require "functions/functions.php";
             <li><a href="all_products.php">All Products</a></li>
             <li><a href="my_account.php">My Account</a></li>
             <li><a href="cart.php">Cart</a></li>
+                <?php
+                if(isset($_SESSION['isAdmin'])){
+                    echo "<li><a href='admin/index.php?insert_product'>Insert Product</a></li>";
+                }
+                ?>
         </ul>
         <div id="form">
             <form method="get" action="results.php">
@@ -42,6 +47,7 @@ require "functions/functions.php";
                     echo "<img src='customer/customer_images/$c_image' width='150' height='150' 
                             style='border: 2px solid white;border-radius: 50%;'>"
                 ?>
+                <li><a href="my_account.php?my_wishlist">My Wish List</a></li>
                 <li><a href="my_account.php?my_orders">My Orders</a></li>
                 <li><a href="my_account.php?edit_account">Edit Account</a></li>
                 <li><a href="my_account.php?change_pass">Change Password</a></li>
@@ -84,7 +90,7 @@ require "functions/functions.php";
                                                 <img src="admin/product_images/<?php echo $pro_image; ?>"
                                                      width="60" height="60">
                                             </td>
-                                            <td><?php echo "Rs".$pro_price?></td>
+                                            <td><?php echo "$".$pro_price?></td>
                                             <td><?php echo $pro_qty; ?></td>
                                         </tr>
                 <?php
@@ -94,6 +100,39 @@ require "functions/functions.php";
                 ?></table>
                 
                 <?php
+                    if(isset($_GET['my_wishlist'])){
+                        $email_id = $_SESSION['customer_email'];
+                        $wish_query="SELECT * from favlist where cust_email='$email_id'";
+                        $get_wish = mysqli_query($con,$wish_query);
+                        while ($wish_row = mysqli_fetch_array($get_wish)){
+                            $pro_id = $wish_row['prod_id'];
+                        $get_pro = "select * from products where pro_id='$pro_id'";
+                        $run_pro = mysqli_query($con, $get_pro);
+                        while ($row_pro = mysqli_fetch_array($run_pro)) {
+                            $pro_title = $row_pro['pro_title'];
+                            $pro_price = $row_pro['pro_price'];
+                            $pro_image = $row_pro['pro_image'];
+                            $pro_desc = $row_pro['pro_desc'];
+
+                
+                
+                ?>
+                                    <table>
+                                        <tr align="center">
+                                            <td><?php echo $pro_title; ?> 
+                                                <br>
+                                                <img src="admin/product_images/<?php echo $pro_image; ?>"
+                                                     width="60" height="60">
+                                            </td>
+                                            <td><?php echo "$".$pro_price?></td>
+                                        </tr>
+                </table>
+                <?php
+                        
+                            }
+                        }
+                    }
+                                        
                     if(isset($_GET['edit_account'])){
                         include ('edit_account.php');
                     }else
