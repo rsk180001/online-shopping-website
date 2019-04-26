@@ -1,74 +1,91 @@
-var validateField = function(fieldElem, infoMessage, validateFn) {
-  // if the associated span does not exist, add it in.
-  if (fieldElem.is(':last-child')) {
-    fieldElem.parent().append("<span></span>");
-  }
-
-  var formStatus = fieldElem.next();
-  var inputValue = fieldElem.val();
-  formStatus.removeClass();
-
-  // separate case for gaining focus
-  if (fieldElem.is(':focus')) {
-    formStatus.text(infoMessage);
-    formStatus.addClass("info");
-    return;
-  }
-
-  // check empty string, valid, or invalid when losing focus.
-  if (!inputValue) {
-    formStatus.text("");
-  } else if (validateFn(fieldElem.val())) {
-    formStatus.text("OK");
-    formStatus.addClass("ok");
-  } else {
-    formStatus.text("Error");
-    formStatus.addClass("error");
-  }
-};
-
 $(document).ready(function() {
-  var createFormHandler = function(field, text, method) {
-    return function() {
-      validateField(field, text, method);
-    }
-  }
+ var email_format = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}(\.[a-zA-Z]{2,3})?$/;
+ var user_n_format = /^[A-Za-z0-9]+$/
+ $("#username").after("<span class = 'info' id = 'user'>Please enter the username</span>");
+ $("#password").after("<span class = 'info' id = 'pass'>Please enter the password</span>");
+ $("#email").after("<span class = 'info' id = 'mail'>Please enter the email id</span>");
+ $("#user,#pass,#mail").hide();
+ $( "#username" ).focus(function() {
+ $("#user").show();
+ });
+$( "#password" ).focus(function() {
+$("#pass").show();
+});
+$( "#email" ).focus(function() {
+$("#mail").show();
+});
 
-  // create event methods for each call. Specifies validation functions.
-  var userHandler = createFormHandler(
-    $('#username'),
-    "Alphanumeric characters only.",
-    function(input) {
-      usernameRegex = /^[a-z0-9]+$/i;
-      return input.match(usernameRegex);
-    }
-  );
 
-  var passwordHandler = createFormHandler(
-    $('#password'),
-    "Must contain a combination of Upper case, Lower case, numeric and special characters.",
-    function(input) {
-      return /^[A-Za-z0-9\d=!\-@._*]*$/.test(input) // consists of only these
-    && /[a-z]/.test(input) // has a lowercase letter
-    && /\d/.test(input) // has a digit ;
-    && input.length > 8
-    && /[A-Z]/.test(input)
+//*************USERNAME VALIDATION****************************
+$( "#username" ).blur(function() {
+$("#user").removeClass().addClass("info");
+$("#user").text("Please enter the username");
+var user_n = $("#username").val();
+var is_user_n = user_n_format.test(user_n);
+if(user_n.length == 0)
+    {
+        $("#user").hide();
     }
-  );
+else if(!is_user_n){
+    $("#user").removeClass().addClass("error");
+    $("#user").text("Incorrect Format");
 
-  var emailHandler = createFormHandler(
-    $('#email'),
-    "Must have '@' character in it.",
-    function(input) {
-      return input.indexOf('@') !== -1;
+}
+else{
+
+    $("#user").removeClass().addClass("ok");
+    $("#user").text("OK");
+}
+
+});
+
+
+//*************VALIDATING PASSWORD****************************
+$( "#password" ).blur(function() {
+$("#pass").removeClass().addClass("info");
+$("#pass").text("Please enter the Password");
+var passwd = $("#password").val();
+if(passwd.length == 0)
+    {
+        $("#pass").hide();
     }
-  );
+else if(passwd.length < 8){
+    $("#pass").removeClass().addClass("error");
+    $("#pass").text("Password Length should be greater than 8");
+    $("#password").val('');
 
-  // activate event handlers.
-  $('#username').focus(userHandler);
-  $('#password').focus(passwordHandler);
-  $('#email').focus(emailHandler);
-  $('#username').blur(userHandler);
-  $('#password').blur(passwordHandler);
-  $('#email').blur(emailHandler);
+}
+else{
+
+    $("#pass").removeClass().addClass("ok");
+    $("#pass").text("OK");
+}
+//$("#pass").hide();
+});
+
+
+//*************VALIDATING EMAIL****************************
+
+$( "#email" ).blur(function() {
+$("#mail").removeClass().addClass("info");
+$("#mail").text("Please enter the email id");
+var email_id = $("#email").val();
+var is_email = email_format.test(email_id);
+if(email_id.length == 0)
+    {
+        $("#mail").hide();
+    }
+else if(!is_email){
+    $("#mail").removeClass().addClass("error");
+    $("#mail").text("This is not a valid email address format");
+    $("#email").val('');
+}
+else{
+
+    $("#mail").removeClass().addClass("ok");
+    $("#mail").text("OK");
+}
+//$("#pass").hide();
+});
+// your js code goes here...
 });

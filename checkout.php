@@ -61,6 +61,8 @@ require "functions/functions.php";
                         Total Price: <?php total_price(); ?>
                     </span>
                 </div>
+
+
                 <?php
                 if(!isset($_SESSION['customer_email'])){
                     include ("customer_login.php");

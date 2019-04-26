@@ -119,7 +119,9 @@ include ('functions/db_connect.php');
                         else if(isset($_GET['del_customer'])){
                             include ('del_customer.php');
                         }
-
+                        else {
+                          include('../index.php');
+                        }
 
                         ?>
                 </div>
