@@ -23,7 +23,7 @@ if(isset($_POST['register'])){
     $c_contact = $_POST['c_contact'];
     $c_address = $_POST['c_address'];
 
-    move_uploaded_file($c_image_tmp,"customer/customer_images/$c_image");
+    move_uploaded_file($c_image_tmp,"customer/customer_images/".$c_image);
 
     $insert_c = "insert into customers (cust_ip,cust_name,cust_email,cust_pass,cust_country,cust_city,cust_contact,cust_address,cust_image)
                   values ('$ip','$c_name','$c_email','$c_pass','$c_country','$c_city','$c_contact','$c_address','$c_image')";
@@ -89,7 +89,7 @@ if(isset($_POST['register'])){
                     </span>
                 </div>
 
-                    <form action="customer_register.php" method="post" onsubmit="return validateForm()">
+                    <form action="customer_register.php" method="post" >
                         <table align="center" width="750">
                             <tr align="center">
                                 <td colspan="2"><h2>create an Account </h2></td>
