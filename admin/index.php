@@ -1,6 +1,5 @@
 <?php
 session_start();
-include ('functions/db_connect.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,22 +17,35 @@ include ('functions/db_connect.php');
     </head>
     <body>
         <div class="wrapper">
+<<<<<<< HEAD
+            <div id="content">
+=======
 
+>>>>>>> 07f944d51a46945696070ee4e262dc6898fbf106
                 <div class="container">
                     <h2 class="text-center text-primary"><?php echo @$_GET['logged_in']?></h2>
                     <?php
                         if(isset($_GET['insert_product'])){
                             include ('insert_product.php');
                         }
+<<<<<<< HEAD
+=======
                         // else if(isset($_GET['view_products'])){
                         //     include ('view_products.php');
                         // }
+>>>>>>> 07f944d51a46945696070ee4e262dc6898fbf106
                         else if(isset($_GET['edit_pro'])){
                             include ('edit_pro.php');
                         }
                         else if(isset($_GET['del_pro'])){
                             include ('del_pro.php');
                         }
+<<<<<<< HEAD
+=======
+                        else if(isset($_GET['sdel_pro'])){
+                            include ('sdel_pro.php');
+                        }
+                        
                         // else if(isset($_GET['view_categories'])){
                         //     include ('view_categories.php');
                         // }
@@ -64,6 +76,7 @@ include ('functions/db_connect.php');
                         // else if(isset($_GET['del_customer'])){
                         //     include ('del_customer.php');
                         // }
+>>>>>>> 07f944d51a46945696070ee4e262dc6898fbf106
                         else {
                           include('../index.php');
                         }

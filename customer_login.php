@@ -22,7 +22,7 @@ if(isset($_POST['login']))
 		$hash = $row_h['cust_pass'];
 		$password_verify = password_verify($c_pass,$hash);
 		if($password_verify== True){
-			// header('location: asas.php');
+			 header('location: index.php');
 			// exit();
 		}
 		else{
@@ -32,7 +32,8 @@ if(isset($_POST['login']))
 		}}
     else{
 				// header('location: details.php');
-        header('location:'.$_SERVER['PHP_SELF']);
+//        header('location:'.$_SERVER['PHP_SELF']);
+        header('location:index.php');
         exit();
     }
 		$sel_cart = "select * from cart where ip_add='$ip'";
@@ -42,9 +43,8 @@ if(isset($_POST['login']))
         $_SESSION['customer_email'] = $c_email;
         header('location: my_account.php');
     }else{
-        echo "here2";
         $_SESSION['customer_email'] = $c_email;
-        header('location: checkout.php');
+        header('location: index.php');
     }
 }
 ?>
@@ -67,6 +67,10 @@ if(isset($_POST['login']))
     <h2 style="padding: 5px;float: left;">
         <a style="text-decoration: none;" href="customer_register.php">Register Here</a>
     </h2>
+<br>    <h2 style="padding: 5px;float: left;">
+        <a style="text-decoration: none;" href="admin/login.php">Admin Login</a>
+    </h2>
+
 
     </form>
 </div>

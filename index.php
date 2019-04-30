@@ -62,7 +62,7 @@ require "functions/functions.php";
                         Total Price: <?php total_price(); ?>
                         <?php
                             if(!isset($_SESSION['customer_email'])){
-                                // echo "<a href='checkout.php'>Login</a>";
+                                
                                 echo "<a href='checkout.php'>Login</a>";
                             }
                             else{
@@ -73,17 +73,17 @@ require "functions/functions.php";
                 </div>
                 <div class="products_box">
                     <?php getPro(); ?>
-                </div>
-                
-                
-                
-                
-                
-            </div>
-            
+                </div>   
+                <div class="pagination">
+                    <a href="index.php?page=1">&laquo;</a>
+                    <a href="index.php?page=1">1</a>
+                    <a href="index.php?page=2">2</a>
+                    <a href="index.php?page=3">3</a>
+                    <a href="index.php?page=3">&raquo;</a>
+                    
+                </div>           
+            </div>            
         </div>
-
     </div>   
-  
 </body>
 </html>

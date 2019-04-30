@@ -104,6 +104,11 @@ session_start();
                             <a href='admin/index.php?del_pro=$pro_id'>
                                 <button> Delete</button>
                             </a>
+                            <br>
+                            <br>
+                            <a href='admin/index.php?sdel_pro=$pro_id'>
+                                <button> Soft Delete</button>
+                            </a>
                             
                             ";
 
