@@ -6,4 +6,7 @@ if(isset($_GET['sdel_pro'])){
     if($run_sdel){
         header('location: ../index.php');
     }
+    else {
+      header('location: ../all_products.php');
+    }
 }

@@ -28,21 +28,21 @@ function getBrands(){
 function getPro($flag = ''){
     global $con;
     $get_pro = "";
-    if(!isset($_GET['cat']) && !isset($_GET['brand']) && !isset($_GET['search'])) 
+    if(!isset($_GET['cat']) && !isset($_GET['brand']) && !isset($_GET['search']))
     {
-        $limit = 8;  
-        if (isset($_GET["page"])) 
-        {  
-            $pn  = $_GET["page"];  
-        }  
-        else 
-        {  
-            $pn=1;  
-        };   
-  
-        $start_from = ($pn-1) * $limit;   
+        $limit = 8;
+        if (isset($_GET["page"]))
+        {
+            $pn  = $_GET["page"];
+        }
+        else
+        {
+            $pn=1;
+        };
+
+        $start_from = ($pn-1) * $limit;
         if($flag == 'all_products')
-            $get_pro = "select * from products ";
+            $get_pro = "select * from products where sflag = 0 ";
         else
             $get_pro = "select * from products LIMIT $start_from, $limit";
     } else if(isset($_GET['cat'])){
