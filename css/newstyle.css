@@ -159,6 +159,7 @@ body {
     align-items: center;
     align-content: center;
     align-self: center;
+    border: 1px solid black;
 }
 
 .pagination a {
@@ -180,12 +181,6 @@ body {
     background-color: black;
     clear:both;
 }
-
-
-
-
-
-
 #footer > h2 {
     text-align: center;
     padding-top: 40px;
