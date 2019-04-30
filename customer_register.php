@@ -169,7 +169,7 @@ if(isset($_POST['register'])){
                             {
                                 document.getElementById('email').value = "";
                             }
-                        
+
                     }
                 };
                 xhttp.open("GET", "check_email.php?e="+email);
