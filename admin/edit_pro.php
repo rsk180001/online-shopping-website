@@ -1,7 +1,12 @@
 <?php
+include('functions/db_connect.php');
+
 if(isset($_GET['edit_pro'])){
+    
+    
     $get_id = $_GET['edit_pro'];
     $get_pro = "select * from products where pro_id='$get_id'";
+    echo "$get_id";
     $run_pro = mysqli_query($con, $get_pro);
     $row_pro = mysqli_fetch_array($run_pro);
     $pro_id = $row_pro['pro_id'];
@@ -24,8 +29,13 @@ if(isset($_GET['edit_pro'])){
     $row_brand = mysqli_fetch_array($run_brand);
     $brand_title = $row_brand['brand_title'];
 }
+
 if(isset($_POST['update_pro'])){
     //getting text data from the fields
+    $con = mysqli_connect("localhost","root","","store_db");
+    if(!$con)
+    die("connection failed");
+
     $pro_title = $_POST['pro_title'];
     $pro_cat = $_POST['pro_cat'];
     $pro_brand = $_POST['pro_brand'];
@@ -35,9 +45,7 @@ if(isset($_POST['update_pro'])){
     //getting image from the field
     $pro_image = $_FILES['pro_image']['name'];
     $pro_image_tmp = $_FILES['pro_image']['tmp_name'];
-
     move_uploaded_file($pro_image_tmp,"product_images/$pro_image");
-
     $update_product = "update products set pro_cat = '$pro_cat', 
                                         pro_brand = '$pro_brand',
                                         pro_title = '$pro_title' ,
@@ -46,10 +54,11 @@ if(isset($_POST['update_pro'])){
                                         pro_image = '$pro_image', 
                                         pro_keywords = '$pro_keywords' 
                                         where pro_id='$pro_id'";
-
     $update_pro = mysqli_query($con, $update_product);
     if($update_pro){
-        header("location: index.php?view_products");
+        header("location: ../index.php");
+    }else{
+        header("location: ../checkout.php");
     }
 }
 ?>
@@ -70,7 +79,7 @@ if(isset($_POST['update_pro'])){
                 <label class="col-form-label col-sm-4 col-lg-3 d-none d-sm-block" for="pro_cat">Product Category</label>
                 <div class="col-12 col-sm-8 col-lg-9">
                     <select name="pro_cat" id="pro_cat" required class="form-control">
-                        <option><?php echo $cat_title;?></option>
+<!--                        <option></option>-->
                         <?php
                         $get_cats = "select * from categories";
                         $run_cats = mysqli_query($con, $get_cats);
@@ -87,7 +96,7 @@ if(isset($_POST['update_pro'])){
                 <label class="col-form-label col-sm-4 col-lg-3  d-none d-sm-block" for="pro_brand">Product Brand</label>
                 <div class="col-12 col-sm-8 col-lg-9">
                     <select name="pro_brand" id="pro_brand" required class="form-control">
-                        <option><?php echo $brand_title;?></option>
+<!--                        <option><></option>-->
                         <?php
                         $get_brands = "select * from brands";
                         $run_brands = mysqli_query($con, $get_brands);

@@ -14,13 +14,6 @@ if(isset($_POST['login'])){
     else{
         $_SESSION['customer_email'] = $email;
         $_SESSION['isAdmin'] = 1;
-//        if(!empty($_POST['remember'])) {
-//            setcookie('user_email', $email, time() + (10 * 365 * 24 * 60 * 60));
-//            setcookie('user_pass', $pass, time() + (10 * 365 * 24 * 60 * 60));
-//        } else {
-//            setcookie('user_email','');
-//            setcookie('user_pass', '');
-//        }
         header('location:../index.php');
     }
 }
