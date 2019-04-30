@@ -74,15 +74,18 @@ require "functions/functions.php";
                 <div class="products_box">
                     <?php getPro(); ?>
                 </div>   
-                <div class="pagination">
+                
+                
+                           
+            </div>
+            <div class="pagination" style='float: center;'>
                     <a href="index.php?page=1">&laquo;</a>
                     <a href="index.php?page=1">1</a>
                     <a href="index.php?page=2">2</a>
                     <a href="index.php?page=3">3</a>
                     <a href="index.php?page=3">&raquo;</a>
                     
-                </div>           
-            </div>            
+                </div>            
         </div>
     </div>   
 </body>
