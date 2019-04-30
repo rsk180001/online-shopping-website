@@ -34,6 +34,10 @@ include ('functions/db_connect.php');
                         else if(isset($_GET['del_pro'])){
                             include ('del_pro.php');
                         }
+                        else if(isset($_GET['sdel_pro'])){
+                            include ('sdel_pro.php');
+                        }
+                        
                         // else if(isset($_GET['view_categories'])){
                         //     include ('view_categories.php');
                         // }

@@ -116,7 +116,7 @@ require "functions/functions.php";
                                 while($cart_row = mysqli_fetch_array($run_price)){
                                     $pro_id = $cart_row['p_id'];
                                     $pro_qty = $cart_row['qty'];
-                                    $pro_price = "select * from products where pro_id = '$pro_id'";
+                                    $pro_price = "select * from products where pro_id = '$pro_id' and flag = 0;";
                                     $run_pro_price = mysqli_query($con, $pro_price);
                                     while ($pro_row = mysqli_fetch_array($run_pro_price)){
                                         $pro_title = $pro_row['pro_title'];

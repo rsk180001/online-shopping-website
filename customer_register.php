@@ -110,7 +110,7 @@ if(isset($_POST['register'])){
                             </tr>
                             <tr>
                                 <td align="right">Password: </td>
-                                <td><input type="password" onkeyup="checkPassword(this.value)" name="pass" id="password" required>
+                                <td><input type="password" name="pass" id="password" required>
                                 <span id="hint2"></span>
                                 </td>
                             </tr>
@@ -163,13 +163,18 @@ if(isset($_POST['register'])){
                 xhttp.onreadystatechange = function () {
                     if (this.readyState == 4 && this.status == 200) {
                         document.getElementById('hint').innerHTML = this.responseText;
+                        if(this.responseText != "Cool")
+                            {
+                                document.getElementById('email').value = "";
+                            }
+                        
                     }
                 };
                 xhttp.open("GET", "check_email.php?e="+email);
                 xhttp.send();
             }
         }
-        function checkPassword(pass) {
+     /*   function checkPassword(pass) {
           document.getElementById('hint2').innerHTML = "Entered";
           if(/^[A-Za-z0-9\d=!\-@._*]*$/.test(pass) // consists of only these
         && /[a-z]/.test(pass) // has a lowercase letter
@@ -182,7 +187,7 @@ if(isset($_POST['register'])){
         else{
           document.getElementById('hint2').innerHTML = "NO";
         }
-        }
+        } */
 
     </script>
 </body>
