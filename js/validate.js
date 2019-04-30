@@ -1,6 +1,8 @@
 $(document).ready(function() {
  var email_format = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}(\.[a-zA-Z]{2,3})?$/;
- var user_n_format = /^[A-Za-z0-9]+$/
+ var user_n_format = /^[A-Za-z0-9]+$/;
+ var pass_format = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+
  $("#username").after("<span class = 'info' id = 'user'>Please enter the username</span>");
  $("#password").after("<span class = 'info' id = 'pass'>Please enter the password</span>");
  $("#email").after("<span class = 'info' id = 'mail'>Please enter the email id</span>");
@@ -49,12 +51,13 @@ if(passwd.length == 0)
     {
         $("#pass").hide();
     }
-else if(passwd.length < 8){
+else if(!pass_format.test(passwd)){
     $("#pass").removeClass().addClass("error");
-    $("#pass").text("Password Length should be greater than 8");
+    $("#pass").text("Minimum eight characters, at least one letter, one number and one special character:");
     $("#password").val('');
 
 }
+
 else{
 
     $("#pass").removeClass().addClass("ok");

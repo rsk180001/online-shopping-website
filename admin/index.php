@@ -17,19 +17,66 @@ session_start();
     </head>
     <body>
         <div class="wrapper">
+<<<<<<< HEAD
             <div id="content">
+=======
+
+>>>>>>> 07f944d51a46945696070ee4e262dc6898fbf106
                 <div class="container">
                     <h2 class="text-center text-primary"><?php echo @$_GET['logged_in']?></h2>
                     <?php
                         if(isset($_GET['insert_product'])){
                             include ('insert_product.php');
                         }
+<<<<<<< HEAD
+=======
+                        // else if(isset($_GET['view_products'])){
+                        //     include ('view_products.php');
+                        // }
+>>>>>>> 07f944d51a46945696070ee4e262dc6898fbf106
                         else if(isset($_GET['edit_pro'])){
                             include ('edit_pro.php');
                         }
                         else if(isset($_GET['del_pro'])){
                             include ('del_pro.php');
                         }
+<<<<<<< HEAD
+=======
+                        else if(isset($_GET['sdel_pro'])){
+                            include ('sdel_pro.php');
+                        }
+                        
+                        // else if(isset($_GET['view_categories'])){
+                        //     include ('view_categories.php');
+                        // }
+                        // else if(isset($_GET['insert_category'])){
+                        //     include ('insert_category.php');
+                        // }
+                        // else if(isset($_GET['edit_cat'])){
+                        //     include ('edit_cat.php');
+                        // }
+                        // else if(isset($_GET['del_cat'])){
+                        //     include ('del_cat.php');
+                        // }
+                        // else if(isset($_GET['view_brands'])) {
+                        //     include('view_brands.php');
+                        // }
+                        // else if(isset($_GET['insert_brand'])) {
+                        //     include('insert_brand.php');
+                        // }
+                        // else if(isset($_GET['edit_brand'])) {
+                        //     include('edit_brand.php');
+                        // }
+                        // else if(isset($_GET['del_brand'])) {
+                        //     include('del_brand.php');
+                        // }
+                        // else if(isset($_GET['view_customers'])){
+                        //     include ('view_customers.php');
+                        // }
+                        // else if(isset($_GET['del_customer'])){
+                        //     include ('del_customer.php');
+                        // }
+>>>>>>> 07f944d51a46945696070ee4e262dc6898fbf106
                         else {
                           include('../index.php');
                         }
@@ -40,14 +87,5 @@ session_start();
         </div>
     <script src="assets/js/jquery-3.3.1.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
-        <script>
-            $(document).ready(function () {
-
-                $('#sidebarCollapse').on('click', function () {
-                    $('#sidebar').toggleClass('active');
-                });
-
-            });
-        </script>
     </body>
 </html>

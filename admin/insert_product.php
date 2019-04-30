@@ -1,4 +1,4 @@
-
+<?php error_reporting(E_ERROR | E_PARSE); ?>
 <div class="row">
     <div class="offset-md-2 col-md-8">
         <form action="" method="post" enctype="multipart/form-data">
@@ -91,15 +91,15 @@ if(isset($_POST['insert_post'])){
     //getting image from the field
     $pro_image = $_FILES['pro_image']['name'];
     $pro_image_tmp = $_FILES['pro_image']['tmp_name'];
-
     move_uploaded_file($pro_image_tmp,"product_images/$pro_image");
-
-    $insert_product = "insert into products (pro_cat, pro_brand,pro_title,pro_price,pro_desc,pro_image,pro_keywords) 
+    $insert_product = "insert into products (pro_cat, pro_brand,pro_title,pro_price,pro_desc,pro_image,pro_keywords)
                   VALUES ('$pro_cat','$pro_brand','$pro_title','$pro_price','$pro_desc','$pro_image','$pro_keywords');";
     $insert_pro = mysqli_query($con, $insert_product);
     if($insert_pro){
-        header("location: ".$_SERVER['PHP_SELF']);
+      ?>
+        <script> location.replace("../all_products.php"); </script>
+        <?php
     }
-}
 
+}
 ?>

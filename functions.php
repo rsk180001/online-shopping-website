@@ -30,18 +30,18 @@ function getPro($flag = ''){
     $get_pro = "";
     if(!isset($_GET['cat']) && !isset($_GET['brand']) && !isset($_GET['search'])) {
         if($flag == 'all_products')
-            $get_pro = "select * from products";
+            $get_pro = "select * from products where sflag = 0 ;";
         else
-            $get_pro = "select * from products order by RAND() limit 0,6";
+            $get_pro = "select * from products where sflag = 0 order by RAND() limit 0,6;";
     } else if(isset($_GET['cat'])){
         $pro_cat_id = $_GET['cat'];
-        $get_pro = "select * from products where pro_cat = '$pro_cat_id'";
+        $get_pro = "select * from products where pro_cat = '$pro_cat_id' and sflag = 0;";
     } else if(isset($_GET['brand'])){
         $pro_brand_id = $_GET['brand'];
-        $get_pro = "select * from products where pro_brand = '$pro_brand_id'";
+        $get_pro = "select * from products where pro_brand = '$pro_brand_id' and sflag = 0;";
     } else if(isset($_GET['search'])){
         $search_query = $_GET['user_query'];
-        $get_pro = "select * from products where pro_keywords like '%$search_query%'";
+        $get_pro = "select * from products where pro_keywords like '%$search_query%' and sflag = 0;";
     }
     $run_pro = mysqli_query($con,$get_pro);
     $count_pro = mysqli_num_rows($run_pro);
@@ -117,7 +117,7 @@ function total_price(){
     while($cart_row = mysqli_fetch_array($run_price)){
         $pro_id = $cart_row['p_id'];
         $pro_qty = $cart_row['qty'];
-        $pro_price = "select * from products where pro_id = '$pro_id'";
+        $pro_price = "select * from products where pro_id = '$pro_id' and flag = 0;";
         $run_pro_price = mysqli_query($con, $pro_price);
         while ($pro_row = mysqli_fetch_array($run_pro_price)){
             $pro_price = $pro_row['pro_price'];

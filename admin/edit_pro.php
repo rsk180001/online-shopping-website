@@ -1,10 +1,22 @@
 <?php
+<<<<<<< HEAD
 include('functions/db_connect.php');
 
 if(isset($_GET['edit_pro'])){
     
     
+=======
+// include('../functions/functions.php');
+// global $con;
+// include('../functions/db_connect.php');
+// if(!isset($_SESSION['customer_email'])){
+//     header('location: login.php?not_admin=You are not Admin!');
+// }
+if(isset($_GET['edit_pro'])){
+   // echo "HELLO";
+>>>>>>> 07f944d51a46945696070ee4e262dc6898fbf106
     $get_id = $_GET['edit_pro'];
+    echo $get_id;
     $get_pro = "select * from products where pro_id='$get_id'";
     echo "$get_id";
     $run_pro = mysqli_query($con, $get_pro);
@@ -18,48 +30,77 @@ if(isset($_GET['edit_pro'])){
     $pro_image = $row_pro['pro_image'];
     $pro_desc = $row_pro['pro_desc'];
     $pro_keywords = $row_pro['pro_keywords'];
-
     $get_cat = "select * from categories where cat_id = '$pro_cat'";
     $run_cat = mysqli_query($con,$get_cat);
     $row_cat = mysqli_fetch_array($run_cat);
     $cat_title = $row_cat['cat_title'];
-
+    $cat_id = $row_cat['cat_id'];
+    echo $cat_id;
     $get_brand = "select * from brands where brand_id = '$pro_brand'";
     $run_brand = mysqli_query($con,$get_brand);
     $row_brand = mysqli_fetch_array($run_brand);
     $brand_title = $row_brand['brand_title'];
+    $brand_id = $row_brand['brand_id'];
+    echo $brand_id;
 }
 
 if(isset($_POST['update_pro'])){
     //getting text data from the fields
+<<<<<<< HEAD
     $con = mysqli_connect("localhost","root","","store_db");
     if(!$con)
     die("connection failed");
 
+=======
+    // echo "bbbbbb";
+>>>>>>> 07f944d51a46945696070ee4e262dc6898fbf106
     $pro_title = $_POST['pro_title'];
+    // echo $pro_title;
     $pro_cat = $_POST['pro_cat'];
     $pro_brand = $_POST['pro_brand'];
     $pro_price = $_POST['pro_price'];
+    // echo $pro_price;
     $pro_desc = $_POST['pro_desc'];
-    $pro_keywords = $_POST['pro_keywords'];
+    // echo $pro_desc;
+    $pro_keywords = trim($_POST['pro_keywords']);
+    // echo $pro_keywords;
     //getting image from the field
     $pro_image = $_FILES['pro_image']['name'];
+    // echo $pro_image;
     $pro_image_tmp = $_FILES['pro_image']['tmp_name'];
+<<<<<<< HEAD
     move_uploaded_file($pro_image_tmp,"product_images/$pro_image");
     $update_product = "update products set pro_cat = '$pro_cat', 
+=======
+    // echo $pro_image_tmp;
+    move_uploaded_file($pro_image_tmp,"product_images/$pro_image");
+    $update_product = "update products set pro_cat = '$pro_cat',
+>>>>>>> 07f944d51a46945696070ee4e262dc6898fbf106
                                         pro_brand = '$pro_brand',
                                         pro_title = '$pro_title' ,
                                         pro_price = '$pro_price',
                                         pro_desc = '$pro_desc',
-                                        pro_image = '$pro_image', 
-                                        pro_keywords = '$pro_keywords' 
+                                        pro_image = '$pro_image',
+                                        pro_keywords = '$pro_keywords'
                                         where pro_id='$pro_id'";
+<<<<<<< HEAD
+=======
+echo"<br>";
+echo $update_product;
+>>>>>>> 07f944d51a46945696070ee4e262dc6898fbf106
     $update_pro = mysqli_query($con, $update_product);
+    echo $update_pro;
     if($update_pro){
         header("location: ../index.php");
+<<<<<<< HEAD
     }else{
         header("location: ../checkout.php");
+=======
+>>>>>>> 07f944d51a46945696070ee4e262dc6898fbf106
     }
+    // else {
+    //   echo "NOT UPDATED";
+    // }
 }
 ?>
 <div class="row">
@@ -79,7 +120,12 @@ if(isset($_POST['update_pro'])){
                 <label class="col-form-label col-sm-4 col-lg-3 d-none d-sm-block" for="pro_cat">Product Category</label>
                 <div class="col-12 col-sm-8 col-lg-9">
                     <select name="pro_cat" id="pro_cat" required class="form-control">
+<<<<<<< HEAD
 <!--                        <option></option>-->
+=======
+                        <!-- <option  value = </option> -->
+
+>>>>>>> 07f944d51a46945696070ee4e262dc6898fbf106
                         <?php
                         $get_cats = "select * from categories";
                         $run_cats = mysqli_query($con, $get_cats);
@@ -96,14 +142,19 @@ if(isset($_POST['update_pro'])){
                 <label class="col-form-label col-sm-4 col-lg-3  d-none d-sm-block" for="pro_brand">Product Brand</label>
                 <div class="col-12 col-sm-8 col-lg-9">
                     <select name="pro_brand" id="pro_brand" required class="form-control">
+<<<<<<< HEAD
 <!--                        <option><></option>-->
+=======
+                        <!-- <option value = </option> -->
+>>>>>>> 07f944d51a46945696070ee4e262dc6898fbf106
                         <?php
                         $get_brands = "select * from brands";
                         $run_brands = mysqli_query($con, $get_brands);
                         while ($row_brands= mysqli_fetch_array($run_brands)){
                             $brand_id = $row_brands['brand_id'];
                             $brand_title = $row_brands['brand_title'];
-                            echo "<option value='$brand_id'>$brand_title </option>";
+
+                            echo "<option value='$brand_id'> $brand_title </option>";
                         }
                         ?>
                     </select>

@@ -23,7 +23,7 @@ if(isset($_POST['register'])){
     $c_contact = $_POST['c_contact'];
     $c_address = $_POST['c_address'];
 
-    move_uploaded_file($c_image_tmp,"customer/customer_images/$c_image");
+    move_uploaded_file($c_image_tmp,"customer/customer_images/".$c_image);
 
     $insert_c = "insert into customers (cust_ip,cust_name,cust_email,cust_pass,cust_country,cust_city,cust_contact,cust_address,cust_image)
                   values ('$ip','$c_name','$c_email','$c_pass','$c_country','$c_city','$c_contact','$c_address','$c_image')";
@@ -89,7 +89,7 @@ if(isset($_POST['register'])){
                     </span>
                 </div>
 
-                    <form action="customer_register.php" method="post" onsubmit="return validateForm()">
+                    <form action="customer_register.php" method="post" >
                         <table align="center" width="750">
                             <tr align="center">
                                 <td colspan="2"><h2>create an Account </h2></td>
@@ -110,7 +110,7 @@ if(isset($_POST['register'])){
                             </tr>
                             <tr>
                                 <td align="right">Password: </td>
-                                <td><input type="password" onkeyup="checkPassword(this.value)" name="pass" id="password" required>
+                                <td><input type="password" name="pass" id="password" required>
                                 <span id="hint2"></span>
                                 </td>
                             </tr>
@@ -163,13 +163,18 @@ if(isset($_POST['register'])){
                 xhttp.onreadystatechange = function () {
                     if (this.readyState == 4 && this.status == 200) {
                         document.getElementById('hint').innerHTML = this.responseText;
+                        if(this.responseText != "Cool")
+                            {
+                                document.getElementById('email').value = "";
+                            }
+                        
                     }
                 };
                 xhttp.open("GET", "check_email.php?e="+email);
                 xhttp.send();
             }
         }
-        function checkPassword(pass) {
+     /*   function checkPassword(pass) {
           document.getElementById('hint2').innerHTML = "Entered";
           if(/^[A-Za-z0-9\d=!\-@._*]*$/.test(pass) // consists of only these
         && /[a-z]/.test(pass) // has a lowercase letter
@@ -182,7 +187,7 @@ if(isset($_POST['register'])){
         else{
           document.getElementById('hint2').innerHTML = "NO";
         }
-        }
+        } */
 
     </script>
 </body>
