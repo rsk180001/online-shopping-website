@@ -44,13 +44,13 @@ require "functions/functions.php";
                     $row_img = mysqli_fetch_array($run_img);
                     $c_image = $row_img['cust_image'];
                     $c_name = $row_img['cust_name'];
-                    echo "<img src='customer/customer_images/$c_image' width='150' height='150' 
+                    echo "<img src='customer/customer_images/$c_image' width='150' height='150'
                             style='border: 2px solid white;border-radius: 50%;'>"
                 ?>
                 <li><a href="my_account.php?my_wishlist">My Wish List</a></li>
                 <li><a href="my_account.php?my_orders">My Orders</a></li>
-                <li><a href="my_account.php?edit_account">Edit Account</a></li>
-                <li><a href="my_account.php?change_pass">Change Password</a></li>
+
+
                 <li><a href="my_account.php?del_account">Delete Account</a></li>
                 <li><a href="logout.php">Logout</a></li>
             </ul>
@@ -85,7 +85,7 @@ require "functions/functions.php";
                         ?>
                                     <table>
                                         <tr align="center">
-                                            <td><?php echo $pro_title; ?> 
+                                            <td><?php echo $pro_title; ?>
                                                 <br>
                                                 <img src="admin/product_images/<?php echo $pro_image; ?>"
                                                      width="60" height="60">
@@ -94,11 +94,11 @@ require "functions/functions.php";
                                             <td><?php echo $pro_qty; ?></td>
                                         </tr>
                 <?php
-                        
+
                         }
                     }
                 ?></table>
-                
+
                 <?php
                     if(isset($_GET['my_wishlist'])){
                         $email_id = $_SESSION['customer_email'];
@@ -114,12 +114,12 @@ require "functions/functions.php";
                             $pro_image = $row_pro['pro_image'];
                             $pro_desc = $row_pro['pro_desc'];
 
-                
-                
+
+
                 ?>
                                     <table>
                                         <tr align="center">
-                                            <td><?php echo $pro_title; ?> 
+                                            <td><?php echo $pro_title; ?>
                                                 <br>
                                                 <img src="admin/product_images/<?php echo $pro_image; ?>"
                                                      width="60" height="60">
@@ -128,17 +128,10 @@ require "functions/functions.php";
                                         </tr>
                 </table>
                 <?php
-                        
+
                             }
                         }
                     }
-                                        
-                    if(isset($_GET['edit_account'])){
-                        include ('edit_account.php');
-                    }else
-                    if(isset($_GET['change_pass'])){
-                        include ('change_pass.php');
-                    }else
                     if(isset($_GET['del_account'])){
                         include ('del_account.php');
                     }

@@ -23,10 +23,12 @@ if(isset($_POST['register'])){
     $c_contact = $_POST['c_contact'];
     $c_address = $_POST['c_address'];
 
-    move_uploaded_file($c_image_tmp,"customer/customer_images/".$c_image);
+
+    move_uploaded_file($c_image_tmp,"customer/customer_images/$c_image");
 
     $insert_c = "insert into customers (cust_ip,cust_name,cust_email,cust_pass,cust_country,cust_city,cust_contact,cust_address,cust_image)
                   values ('$ip','$c_name','$c_email','$c_pass','$c_country','$c_city','$c_contact','$c_address','$c_image')";
+
     $run_c = mysqli_query($con,$insert_c);
     $sel_cart = "select * from cart where ip_add='$ip'";
     $run_cart = mysqli_query($con,$sel_cart);
@@ -56,7 +58,7 @@ if(isset($_POST['register'])){
             <ul id="menu">
                 <li><a href="index.php">Home</a></li>
                 <li><a href="all_products.php">All Products</a></li>
-                <li><a href="customer/account.php">My Account</a></li>
+                <li><a href="checkout.php">My Account</a></li>
                 <li><a href="cart.php">Cart</a></li>
             </ul>
             <div id="form">

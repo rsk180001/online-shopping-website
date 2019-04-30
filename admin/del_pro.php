@@ -7,3 +7,4 @@ if(isset($_GET['del_pro'])){
         header('location: ../index.php');
     }
 }
+?>
